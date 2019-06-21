@@ -24,7 +24,7 @@ class AppController extends Controller
             if ($first_part == $file)
             {
                 array_push($matchedFiles, $audioFile);
-                continue;
+                break;
             }
             elseif (Str::startsWith($audioFile, strtoupper($file)))
             {
