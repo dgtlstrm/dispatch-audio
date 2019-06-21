@@ -10,7 +10,7 @@ class AppController extends Controller
 
     public function getAudioFileList ()
     {
-        return response()->json(public_path('audio'));
+        return response()->json(glob(public_path('audio')));
     }
 
     public function getAudioFile ($file)
@@ -20,7 +20,7 @@ class AppController extends Controller
         {
             if (Str::contains($audioFile, $file))
             {
-                return response()->file($audioPath . $audioFile);
+                return response()->download($audioPath . '/' . $audioFile);
             }
         }
     }
