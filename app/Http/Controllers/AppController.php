@@ -31,6 +31,7 @@ class AppController extends Controller
                 continue;
             }
         }
-        return response()->file('audio/' . Arr::random($matchedFiles));
+        if (count($matchedFiles) == 0) return response()->file('audio/A_01.wav');
+        else return response()->file('audio/' . Arr::random($matchedFiles));
     }
 }
