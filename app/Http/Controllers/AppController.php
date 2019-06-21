@@ -22,7 +22,7 @@ class AppController extends Controller
         {
             if (Str::contains($audioFile, strtoupper($file)))
             {
-                Arr::add($matchedFiles, $audioFile);
+                array_push($matchedFiles, $audioFile);
             }
         }
         return response()->file('audio/' . Arr::random($matchedFiles));
