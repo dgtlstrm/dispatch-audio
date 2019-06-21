@@ -18,7 +18,7 @@ class AppController extends Controller
         $audioPath = public_path('audio');
         foreach (scandir($audioPath) as $audioFile)
         {
-            if (Str::contains($audioFile, $file))
+            if (Str::contains($audioFile, strtoupper($file)))
             {
                 return response()->download('audio/' . $audioFile);
             }
