@@ -20,9 +20,15 @@ class AppController extends Controller
         $matchedFiles = [];
         foreach (scandir($audioPath) as $audioFile)
         {
-            if (Str::contains($audioFile, strtoupper($file)))
+            if (Str::startsWith($audioFile, strtoupper($file)))
             {
                 array_push($matchedFiles, $audioFile);
+                break;
+            }
+            elseif (Str::contains($audioFile, strtoupper($file)))
+            {
+                array_push($matchedFiles, $audioFile);
+                continue;
             }
         }
         return response()->file('audio/' . Arr::random($matchedFiles));
