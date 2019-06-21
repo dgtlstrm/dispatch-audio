@@ -20,7 +20,7 @@ class AppController extends Controller
         {
             if (Str::contains($audioFile, $file))
             {
-                return response()->file('audio/' . $audioFile);
+                return response()->download('audio/' . $audioFile);
             }
         }
     }
