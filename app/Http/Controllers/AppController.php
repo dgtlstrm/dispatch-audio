@@ -7,6 +7,12 @@ use Illuminate\Support\Str;
 
 class AppController extends Controller
 {
+
+    public function getAudioFileList ()
+    {
+        return response()->json(public_path('audio'));
+    }
+
     public function getAudioFile ($file)
     {
         $audioPath = public_path('audio');
