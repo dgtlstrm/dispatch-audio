@@ -10,7 +10,7 @@ class AppController extends Controller
 
     public function getAudioFileList ()
     {
-        return response()->json(glob(public_path('audio')));
+        return response()->json(scandir(public_path('audio')));
     }
 
     public function getAudioFile ($file)
