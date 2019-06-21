@@ -20,7 +20,13 @@ class AppController extends Controller
         $matchedFiles = [];
         foreach (scandir($audioPath) as $audioFile)
         {
-            if (Str::startsWith($audioFile, strtoupper($file)))
+            $first_part = explode("_", $audioFile)[0];
+            if ($first_part == $file)
+            {
+                array_push($matchedFiles, $audioFile);
+                continue;
+            }
+            elseif (Str::startsWith($audioFile, strtoupper($file)))
             {
                 array_push($matchedFiles, $audioFile);
                 break;
