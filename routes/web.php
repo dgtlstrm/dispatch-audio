@@ -15,7 +15,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::prefix('audio')->group(function () {
+Route::prefix('stream')->group(function () {
     Route::get('/', 'AppController@getAudioFileList');
     Route::get('/{file}', 'AppController@getAudioFile');
 });
