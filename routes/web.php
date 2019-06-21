@@ -18,4 +18,5 @@ Route::get('/', function () {
 Route::prefix('stream')->group(function () {
     Route::get('/', 'AppController@getAudioFileList');
     Route::get('/{file}', 'AppController@getAudioFile');
+    Route::get('/{file}/test', 'AppController@testGetAudioFile');
 });

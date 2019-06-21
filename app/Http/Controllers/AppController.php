@@ -40,4 +40,30 @@ class AppController extends Controller
         if (count($matchedFiles) == 0) return response()->file('audio/A_01.wav');
         else return response()->file('audio/' . Arr::random($matchedFiles));
     }
+
+    public function testGetAudioFile ($file)
+    {
+        $audioPath = public_path('audio');
+        $matchedFiles = [];
+        foreach (scandir($audioPath) as $audioFile)
+        {
+            $first_part = explode("_", $audioFile)[0];
+            if ($first_part == $file)
+            {
+                array_push($matchedFiles, $audioFile);
+                break;
+            }
+            elseif (Str::startsWith($audioFile, strtoupper($file)))
+            {
+                array_push($matchedFiles, $audioFile);
+                break;
+            }
+            elseif (Str::contains($audioFile, strtoupper($file)))
+            {
+                array_push($matchedFiles, $audioFile);
+                continue;
+            }
+        }
+        return response()->json($matchedFiles);
+    }
 }
